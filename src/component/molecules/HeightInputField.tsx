@@ -1,5 +1,5 @@
 import { InputField } from '../atoms';
-import { Theme, makeStyles, createStyles } from '@material-ui/core'
+import { Theme, makeStyles, createStyles } from '@material-ui/core';
 import { ClassNameMap } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme : Theme) =>
@@ -25,6 +25,8 @@ const HeightInputField = () => {
             unitText="cm"
             maxLength={6}
             areaLabel="height"
+            fontType = "fab"
+            fontIconName = "github"
         />
     )
 }

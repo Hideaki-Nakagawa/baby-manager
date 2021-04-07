@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import { Theme, createStyles, makeStyles, FormControl, FormHelperText, Input, InputAdornment } from '@material-ui/core';
+import { Theme, createStyles, makeStyles, FormControl, FormHelperText, Input, InputAdornment} from '@material-ui/core';
 import { ClassNameMap } from '@material-ui/styles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { IconName, IconPrefix } from '@fortawesome/fontawesome-common-types';
 
 /** @summary style define*/
 const useStyles = makeStyles((theme: Theme) =>
@@ -26,6 +28,8 @@ type Props = {
     unitText : string
     maxLength : number
     areaLabel : string
+    fontType : IconPrefix
+    fontIconName : IconName
     addClass : ClassNameMap
 }
 
@@ -58,6 +62,7 @@ const InputField = (props : Props) => {
                 id={props.id}
                 value={myText}
                 onChange={handleChange}
+                startAdornment={<FontAwesomeIcon icon = {[props.fontType , props.fontIconName]} />}
                 endAdornment={<InputAdornment position="end">{props.unitText}</InputAdornment>}
                 aria-describedby={props.titleId}
                 inputProps={{
