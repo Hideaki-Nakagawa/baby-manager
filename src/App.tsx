@@ -7,6 +7,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons'; //fontawesomeのbrand�
 import { fas } from '@fortawesome/free-solid-svg-icons'; //fontawesomeのsolidアイコンのインポート
 import { far } from '@fortawesome/free-regular-svg-icons'; //fontawesomeのregularアイコンのインポート
 import { HeightInputField } from './component/molecules';
+import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
 
 library.add(fab, fas, far); //他のコンポーネントから簡単に呼び出せるようにするための登録処理
 
@@ -17,6 +18,12 @@ function App() {
       //type: 'light',
     }
   })
+
+  /** Googleアカウントの認証結果をコンソールに出力 */
+  const responseGoogle = (response: GoogleLoginResponse | GoogleLoginResponseOffline) => {
+    console.log(response);
+  }
+  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -35,6 +42,12 @@ function App() {
             Learn React
         </a>
           <HeightInputField />
+          <GoogleLogin
+            clientId="dummy"
+            buttonText="Login"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={'single_host_origin'}/>
         </header>
       </div>
     </ThemeProvider>
