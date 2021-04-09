@@ -5,13 +5,13 @@ import { ClassNameMap } from '@material-ui/styles';
 const useStyles = makeStyles((theme : Theme) =>
     createStyles({
         "Size": {
-            width: "5em",
+            width: "15em",
         }
     }),
 );
 
-/** 身長入力フィールド コンポーネント */
-const HeightInputField = () => {
+/** メールアドレス入力フィールド コンポーネント */
+const EmailAddressInputField = () => {
 
     /** @summary style hook api */
     const classes : ClassNameMap = useStyles();
@@ -19,16 +19,16 @@ const HeightInputField = () => {
     return (
         <InputField
             addClass={classes}
-            titleId="height_title"
-            titleText="身長"
-            id="height_input"
-            unitText="cm"
+            titleId="mail_address_title"
+            titleText="E-mail"
+            id="mail_address_input"
+            unitText=""
             inputType="text"
-            maxLength={6}
-            areaLabel="height"
+            maxLength={50}
+            areaLabel="email"
             fontType = "fas"
-            fontIconName = "ruler"
+            fontIconName = "envelope"
         />
     )
 }
-export default HeightInputField;
+export default EmailAddressInputField;

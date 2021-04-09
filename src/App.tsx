@@ -6,13 +6,14 @@ import { library } from '@fortawesome/fontawesome-svg-core'; //fontawesomeのコ
 import { fab } from '@fortawesome/free-brands-svg-icons'; //fontawesomeのbrandアイコンのインポート
 import { fas } from '@fortawesome/free-solid-svg-icons'; //fontawesomeのsolidアイコンのインポート
 import { far } from '@fortawesome/free-regular-svg-icons'; //fontawesomeのregularアイコンのインポート
-import { HeightInputField } from './component/molecules';
+import { EmailAddressInputField, HeightInputField, PasswordInputField, WeightInputField } from './component/molecules';
 import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
+import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 
 library.add(fab, fas, far); //他のコンポーネントから簡単に呼び出せるようにするための登録処理
 
 function App() {
-  const theme : Theme = createMuiTheme({
+  const theme: Theme = createMuiTheme({
     palette: {
       type: 'dark',
       //type: 'light',
@@ -23,7 +24,7 @@ function App() {
   const responseGoogle = (response: GoogleLoginResponse | GoogleLoginResponseOffline) => {
     console.log(response);
   }
-  
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -41,13 +42,25 @@ function App() {
           >
             Learn React
         </a>
-          <HeightInputField />
+          <BrowserRouter>
+            <Switch>
+              <Route exact path="/"></Route>
+              <Route path="/height" component={HeightInputField}></Route>
+              <Route path="/weight" component={WeightInputField}></Route>
+              <Route path="/mail" component={EmailAddressInputField}></Route>
+              <Route path="/password" component={PasswordInputField}></Route>
+            </Switch>
+            <Link to="/height">height</Link>
+            <Link to="/weight">weight</Link>
+            <Link to="/mail">mail</Link>
+            <Link to="/password">password</Link>
+          </BrowserRouter>
           <GoogleLogin
             clientId="dummy"
             buttonText="Login"
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
-            cookiePolicy={'single_host_origin'}/>
+            cookiePolicy={'single_host_origin'} />
         </header>
       </div>
     </ThemeProvider>

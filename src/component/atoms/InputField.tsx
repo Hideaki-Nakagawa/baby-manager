@@ -14,6 +14,9 @@ const useStyles = makeStyles((theme: Theme) =>
         withoutLabel: {
             marginTop: theme.spacing(3),
         },
+        iconMargin:{
+            marginRight: theme.spacing(1),
+        },
     }),
 );
 
@@ -26,6 +29,7 @@ type Props = {
     titleId : string 
     titleText : string
     unitText : string
+    inputType : string
     maxLength : number
     areaLabel : string
     fontType : IconPrefix
@@ -61,8 +65,9 @@ const InputField = (props : Props) => {
             <Input
                 id={props.id}
                 value={myText}
+                type={props.inputType}
                 onChange={handleChange}
-                startAdornment={<FontAwesomeIcon icon = {[props.fontType , props.fontIconName]} />}
+                startAdornment={<FontAwesomeIcon icon = {[props.fontType , props.fontIconName]} className={classes.iconMargin}/>}
                 endAdornment={<InputAdornment position="end">{props.unitText}</InputAdornment>}
                 aria-describedby={props.titleId}
                 inputProps={{

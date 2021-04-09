@@ -10,8 +10,8 @@ const useStyles = makeStyles((theme : Theme) =>
     }),
 );
 
-/** 身長入力フィールド コンポーネント */
-const HeightInputField = () => {
+/** 体重入力フィールド コンポーネント */
+const WeightInputField = () => {
 
     /** @summary style hook api */
     const classes : ClassNameMap = useStyles();
@@ -19,16 +19,16 @@ const HeightInputField = () => {
     return (
         <InputField
             addClass={classes}
-            titleId="height_title"
-            titleText="身長"
-            id="height_input"
-            unitText="cm"
+            titleId="weight_title"
+            titleText="体重"
+            id="weight_input"
+            unitText="kg"
             inputType="text"
-            maxLength={6}
-            areaLabel="height"
+            maxLength={4}
+            areaLabel="weight"
             fontType = "fas"
-            fontIconName = "ruler"
+            fontIconName = "weight"
         />
     )
 }
-export default HeightInputField;
+export default WeightInputField;
