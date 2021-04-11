@@ -4,9 +4,12 @@ import { ClassNameMap } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme : Theme) =>
     createStyles({
-        "Size": {
+        "Size1": {
+            width: "15em",
+        },
+        "Size2": {
             width: "5em",
-        }
+        },
     }),
 );
 

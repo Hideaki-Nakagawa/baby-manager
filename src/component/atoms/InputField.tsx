@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import clsx from 'clsx';
-import { Theme, createStyles, makeStyles, FormControl, FormHelperText, Input, InputAdornment} from '@material-ui/core';
+import { Theme, createStyles, makeStyles, FormControl, FormHelperText, Input, InputAdornment, useMediaQuery } from '@material-ui/core';
 import { ClassNameMap } from '@material-ui/styles';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconName, IconPrefix } from '@fortawesome/fontawesome-common-types';
@@ -14,7 +13,7 @@ const useStyles = makeStyles((theme: Theme) =>
         withoutLabel: {
             marginTop: theme.spacing(3),
         },
-        iconMargin:{
+        iconMargin: {
             marginRight: theme.spacing(1),
         },
     }),
@@ -26,15 +25,15 @@ const useStyles = makeStyles((theme: Theme) =>
  */
 type Props = {
     id: string
-    titleId : string 
-    titleText : string
-    unitText : string
-    inputType : string
-    maxLength : number
-    areaLabel : string
-    fontType : IconPrefix
-    fontIconName : IconName
-    addClass : ClassNameMap
+    titleId: string
+    titleText: string
+    unitText: string
+    inputType: string
+    maxLength: number
+    areaLabel: string
+    fontType: IconPrefix
+    fontIconName: IconName
+    addClass: ClassNameMap
 }
 
 /**
@@ -42,7 +41,7 @@ type Props = {
  * @param props 
  * @returns 
  */
-const InputField = (props : Props) => {
+const InputField = (props: Props) => {
 
     /** @summary state hook */
     const [myText, setText] = useState('');
@@ -59,15 +58,18 @@ const InputField = (props : Props) => {
     /** @summary style hook api */
     const classes = useStyles();
 
+    /** @summary media query */
+    const matches = useMediaQuery('(min-width:768px)');
+
     return (
-        <FormControl className={clsx(classes.margin, classes.withoutLabel, props.addClass.Size)}>
+        <FormControl className={`${classes.margin} ${classes.withoutLabel} ${matches ? props.addClass.Size1 : props.addClass.Size2}`}>
             <FormHelperText id={props.titleId}>{props.titleText}</FormHelperText>
             <Input
                 id={props.id}
                 value={myText}
                 type={props.inputType}
                 onChange={handleChange}
-                startAdornment={<FontAwesomeIcon icon = {[props.fontType , props.fontIconName]} className={classes.iconMargin}/>}
+                startAdornment={<FontAwesomeIcon icon={[props.fontType, props.fontIconName]} className={classes.iconMargin} />}
                 endAdornment={<InputAdornment position="end">{props.unitText}</InputAdornment>}
                 aria-describedby={props.titleId}
                 inputProps={{

@@ -1,12 +1,10 @@
-import { InputField } from '../atoms';
-import { Theme, makeStyles, createStyles } from '@material-ui/core';
+import { Theme, makeStyles, createStyles, Grid } from '@material-ui/core';
 import { ClassNameMap } from '@material-ui/styles';
+import { useEffect, useState } from 'react';
+import { LoginForm, SplashScreen } from '../organisms';
 
-const useStyles = makeStyles((theme : Theme) =>
+const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        "Size": {
-            width: "15em",
-        }
     }),
 );
 
@@ -14,7 +12,23 @@ const useStyles = makeStyles((theme : Theme) =>
 const Login = () => {
 
     /** @summary style hook api */
-    const classes : ClassNameMap = useStyles();
+    const classes: ClassNameMap = useStyles();
+
+    /** @summary state hook */
+    const [splash, setShow] = useState(true);
+
+    /** @summary life cycle */
+    useEffect(() => {
+        setTimeout(() => {
+            setShow(false);
+        }, 3000);
+    }, []);
+
+    return (
+        <Grid>
+            { splash ? <SplashScreen /> : <LoginForm /> }
+        </Grid>
+    )
 
 }
 export default Login;
