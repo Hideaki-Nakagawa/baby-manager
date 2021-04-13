@@ -62,7 +62,7 @@ const InputField = (props: Props) => {
     const matches = useMediaQuery('(min-width:768px)');
 
     return (
-        <FormControl className={`${classes.margin} ${classes.withoutLabel} ${matches ? props.addClass.Size1 : props.addClass.Size2}`}>
+        <FormControl className={`${classes.margin} ${classes.withoutLabel} ${matches ? props.addClass.sizeBig : props.addClass.sizeSmall}`}>
             <FormHelperText id={props.titleId}>{props.titleText}</FormHelperText>
             <Input
                 id={props.id}

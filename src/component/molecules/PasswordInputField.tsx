@@ -4,10 +4,10 @@ import { ClassNameMap } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        "Size1": {
+        "sizeBig": {
             width: "15em",
         },
-        "Size2": {
+        "sizeSmall": {
             width: "15em",
         },
     }),

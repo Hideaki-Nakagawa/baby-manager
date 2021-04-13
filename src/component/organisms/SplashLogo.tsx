@@ -4,19 +4,19 @@ import logo from '../../resource/img/logo.png';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
-        "Size1": {
-            height: 'auto',
-            width: '50%',
-        },
-        "Size2": {
+        "sizeBig": {
             height: 'auto',
             width: '35%',
+        },
+        "sizeSmall": {
+            height: 'auto',
+            width: '70%',
         },
     }),
 );
 
-/** スプラッシュ画面 コンポーネント */
-const SplashScreen = () => {
+/** ロゴ コンポーネント */
+const SplashLogo = () => {
 
     /** @summary style hook api */
     const classes: ClassNameMap = useStyles();
@@ -25,7 +25,7 @@ const SplashScreen = () => {
     const matches = useMediaQuery('(min-width:768px)');
 
     return (
-        <img src={logo} className={`${matches ? classes.Size1 : classes.Size2}`} alt="" />
+        <img src={logo} className={`${matches ? classes.sizeBig : classes.sizeSmall}`} alt="" />
     )
 }
-export default SplashScreen;
+export default SplashLogo;

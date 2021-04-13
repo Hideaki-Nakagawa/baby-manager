@@ -5,7 +5,6 @@ import { library } from '@fortawesome/fontawesome-svg-core'; //fontawesomeのコ
 import { fab } from '@fortawesome/free-brands-svg-icons'; //fontawesomeのbrandアイコンのインポート
 import { fas } from '@fortawesome/free-solid-svg-icons'; //fontawesomeのsolidアイコンのインポート
 import { far } from '@fortawesome/free-regular-svg-icons'; //fontawesomeのregularアイコンのインポート
-import GoogleLogin, { GoogleLoginResponse, GoogleLoginResponseOffline } from 'react-google-login';
 import { BrowserRouter, Link, Route, Switch } from 'react-router-dom';
 import { Login } from './component/page';
 
@@ -19,31 +18,19 @@ function App() {
     }
   })
 
-  /** Googleアカウントの認証結果をコンソールに出力 */
-  const responseGoogle = (response: GoogleLoginResponse | GoogleLoginResponseOffline) => {
-    console.log(response);
-  }
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <div className="App">
-        <header className="App-header">
-          <BrowserRouter>
-            <Switch>
-              <Route exact path="/"></Route>
-              <Route path="/login" component={Login}></Route>
-            </Switch>
-            <Link to="/login">login</Link>
-          </BrowserRouter>
-          <GoogleLogin
-            clientId="dummy"
-            buttonText="Login"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
-            cookiePolicy={'single_host_origin'} />
-        </header>
-      </div>
+      <header className="App-header">
+        <Login />
+        {/* <BrowserRouter>
+        <Switch>
+          <Route exact path="/"></Route>
+          <Route path="/login" component={Login}></Route>
+        </Switch>
+        <Link to="/login">login</Link>
+      </BrowserRouter> */}
+      </header>
     </ThemeProvider>
   );
 }

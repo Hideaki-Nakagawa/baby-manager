@@ -1,7 +1,7 @@
 import { Theme, makeStyles, createStyles, Grid } from '@material-ui/core';
 import { ClassNameMap } from '@material-ui/styles';
 import { useEffect, useState } from 'react';
-import { LoginForm, SplashScreen } from '../organisms';
+import { LoginForm, SplashLogo } from '../organisms';
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -25,8 +25,14 @@ const Login = () => {
     }, []);
 
     return (
-        <Grid>
-            { splash ? <SplashScreen /> : <LoginForm /> }
+        <Grid
+            container
+            direction="column"
+            justify="center"
+            alignItems="center"
+            className="height:100%"
+        >
+            { splash ? <SplashLogo /> : <LoginForm /> }
         </Grid>
     )
 
